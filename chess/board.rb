@@ -1,18 +1,45 @@
+require_relative "piece"
+
 class Board
+
+
+
+  # [Rook, Bishop, Knight ... Rook].map do |piece_class|
+  #   piece_class.new
+  # end
+  #
+  # class Cat
+  # end
+  #
+  # class Dog
+  # end
+  #
+  # animals = [Cat, Dog]
+  # pets = animals.map do |animal_class|
+  #   animal_class.new
+  # end
+  # [Cat.new, Dog.new]
 
   def initialize
     @sentinel = nil
-    @rows = rows
+    @rows = Board.board_creator
+  end
+
+  def self.board_creator
+    board = Array.new(8) { Array.new(8) }
+
+
+    end
   end
 
   def [](pos)
     x, y = pos
-    @board[x][y]
+    @rows[x][y]
   end
 
-  def[]=(pos, val)
+  def []=(pos, val)
     x, y = pos
-    @board[x][y] = val
+    @rows[x][y] = val
   end
 
   def move_piece(color, start_pos, end_pos)
