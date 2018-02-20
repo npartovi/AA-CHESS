@@ -1,8 +1,15 @@
-require_relative "piece"
+require_relative "rook"
+require_relative "knight"
+require_relative "bishop"
+require_relative "king"
+require_relative "queen"
+require_relative "pawn"
+
+
 
 class Board
 
-
+  attr_reader :rows
 
   # [Rook, Bishop, Knight ... Rook].map do |piece_class|
   #   piece_class.new
@@ -27,9 +34,21 @@ class Board
 
   def self.board_creator
     board = Array.new(8) { Array.new(8) }
+  end
 
+  def piece_map
 
+    back_pieces = [Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook]
+
+  
+    (0..7).each do |i|
+      @rows[0][i] = black_objects[i]
+      @rows[7][i] = white_objects[i]
     end
+
+
+
+
   end
 
   def [](pos)
@@ -77,4 +96,7 @@ class Board
   def move_piece(color, start_pos, end_pos)
 
   end
+
+
+  private
 end
